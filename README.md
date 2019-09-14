@@ -1,7 +1,13 @@
 # Job Hunt
 
+Live running instance (deployed on ZEIT): https://job-hunt.piyush-bhatt.now.sh 
+
 Job Hunt is a web application for listing and searching job postings. This is the client side code for the same.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
+
+
+This application requires the server instance running to fetch data. [Click Here](https://github.com/piyush-bhatt/job-hunt-server) to access the backend code required to up the server.
+
 
 ## Pre-Requisites
 
@@ -30,6 +36,8 @@ Navigate to `http://localhost:4200/` in your browser.
 
 
 The website will list the jobs posted (if any)
+
+Any Job Post that is due to expire in 5 days will have an 'Expiring Soon' text displayed next to it
 
 To Create a new Job Post:
 
