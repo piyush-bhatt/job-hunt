@@ -18,11 +18,13 @@ This application requires the server instance running to fetch data. [Click Here
 
 Enter the folder containing package.json
 
-Use the package manager [npm](https://www.npmjs.com/) to install all the dependencies required for Job Hunt via a bash/command prompt.
+Use the package manager [npm](https://www.npmjs.com/) to install all the dependencies required for Job Hunt from a bash/command prompt.
 
 ```bash
 npm install
 ```
+
+Change the SERVER_URL to 'http://localhost:3000/jobs' if running the server instance locally.
 
 ## Usage
 
