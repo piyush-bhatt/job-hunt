@@ -1,0 +1,60 @@
+<div class="row justify-content-center" style="width:100%">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h4 style="margin-top: 15px;">Create a job posting</h4>
+            <mat-divider style="margin: 15px 0px;"></mat-divider>
+            <div class="form-group">
+                <mat-form-field class="full-width">
+                    <input matInput autocomplete="off" placeholder="Title" type="text" id="title" name="title" formControlName="title">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="full-width">
+                    <input matInput autocomplete="off" placeholder="Company Name" type="text" id="companyname" name="companyname" formControlName="companyname">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="full-width">
+                    <input matInput autocomplete="off" placeholder="Apply Link" type="text" id="applylink" name="applylink" formControlName="applylink">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="full-width">
+                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5" autocomplete="off" placeholder="Job Description" id="jd" name="jd" formControlName="jd">
+                    </textarea>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="full-width">
+                    <input matInput autocomplete="off" placeholder="Location" type="text" id="location" name="location" formControlName="location">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="full-width">
+                    <input matInput autocomplete="off" placeholder="Experience" type="text" id="experience" name="experience" formControlName="experience">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="full-width">
+                    <input matInput autocomplete="off" placeholder="Salary" type="text" id="salary" name="salary" formControlName="salary">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="full-width">
+                    <input matInput autocomplete="off" placeholder="Skills" type="text" id="skills" name="skills" formControlName="skills">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="full-width">
+                    <input matInput autocomplete="off" placeholder="End Date" [matDatepicker]="picker" (focus)="picker.open()" readonly id="enddate" name="enddate" formControlName="enddate" [min]="minDate">
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div style="text-align: center; margin-bottom: 30px;">
+                <button mat-flat-button color="warn" id="cancel" (click)="previousState()">Cancel</button>
+                &nbsp;
+                <button mat-flat-button color="primary" type="submit" id="save" [disabled]="editForm.invalid || isSaving">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

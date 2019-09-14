@@ -1,14 +1,55 @@
-# JobHunt
+# Job Hunt
 
+Job Hunt is a web application for listing and searching job postings. This is the client side code for the same.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
-## Development server
+## Pre-Requisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. [NodeJS](https://nodejs.org/en/)
+2. [Angular CLI](https://cli.angular.io/)
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Enter the folder containing package.json
+
+Use the package manager [npm](https://www.npmjs.com/) to install all the dependencies required for Job Hunt via a bash/command prompt.
+
+```bash
+npm install
+```
+
+## Usage
+
+Once the dependencies are installed, run the application.
+
+```bash
+ng serve
+```
+
+Navigate to `http://localhost:4200/` in your browser.
+
+
+The website will list the jobs posted (if any)
+
+To Create a new Job Post:
+
+1. Click on the plus icon on top right part of the screen
+2. Fill in the form with details
+3. Click on Save
+
+To View a Job Post:
+
+1. Click on the row of the table for the job you want to view.
+2. An expanded panel will show job description. Click on Apply Now to view more details of the Job and apply for the same.
+3. A job details page will open with all the details of the job. Click on Apply Now to visit the application link.
+
+To Filter the Job Posts:
+
+1. Enter any of company name, skills, experience or location to filter the job posts.
+
+To Sort the Job Posts by Location or Experience:
+
+1. Click on any of Location or Experience to sort the job posts.
 
 ## Build
 
@@ -17,11 +58,3 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

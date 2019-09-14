@@ -1,50 +1,87 @@
-<div class="example-container mat-elevation-z8">
-        <div class="example-loading-shade"
-             *ngIf="isLoadingResults">
-          <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-        </div>
-      
-        <div class="example-table-container">
-      
-          <table mat-table [dataSource]="data" class="example-table"
-                 matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
-            <ng-container matColumnDef="title">
-              <th mat-header-cell *matHeaderCellDef>Title</th>
-              <td mat-cell *matCellDef="let row">{{row.title}}</td>
-            </ng-container>
-      
-            <ng-container matColumnDef="companyname">
-              <th mat-header-cell *matHeaderCellDef>Company Name</th>
-              <td mat-cell *matCellDef="let row">{{row.companyname}}</td>
-            </ng-container>
-      
-            <ng-container matColumnDef="location">
-              <th mat-header-cell *matHeaderCellDef>Location</th>
-              <td mat-cell *matCellDef="let row">{{row.location}}</td>
-            </ng-container>
+<div *ngIf="totalJobs !== 0">
+        <mat-form-field>
+                <input matInput autocomplete="off" (keyup)="applyFilter($event.target.value)" placeholder="Enter Company Name, Skills, Experience or Location to search jobs">
+            </mat-form-field>
+            <mat-divider></mat-divider>
+            <div style="margin-top: 10px; position: relative; right: 0; width: 100%">
+                <span *ngIf="filteredJobs" style="float: left; margin-left: 20px"><h6>Filtered Jobs: {{filteredJobs}}</h6></span>
+                <span style="float: right; margin-right: 20px"><h6>Total Jobs: {{totalJobs}}</h6></span>
+            </div>
+            <mat-divider style="margin-top:50px"></mat-divider>
+            <div class="container-div mat-elevation-z8">
+                    <div class="loading-shade"
+                         *ngIf="isLoadingResults">
+                      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+                    </div>
+                  
+                    <div class="table-container">
+                  
+                      <table mat-table [dataSource]="dataSource" class="table" multiTemplateDataRows
+                             matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
+                        <ng-container matColumnDef="title">
+                          <th mat-header-cell *matHeaderCellDef>Title</th>
+                          <td mat-cell *matCellDef="let row">{{row.title}}</td>
+                        </ng-container>
+                  
+                        <ng-container matColumnDef="companyname">
+                          <th mat-header-cell *matHeaderCellDef>Company Name</th>
+                          <td mat-cell *matCellDef="let row">{{row.companyname}}</td>
+                        </ng-container>
+                  
+                        <ng-container matColumnDef="location">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
+                          <td mat-cell *matCellDef="let row">{{row.location}}</td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="skills">
+                            <th mat-header-cell *matHeaderCellDef>Skills</th>
+                            <td mat-cell *matCellDef="let row">{{row.skills}}</td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="experience">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Experience</th>
+                            <td mat-cell *matCellDef="let row">{{row.experience}}</td>
+                        </ng-container>
+                  
+                        <ng-container matColumnDef="created">
+                          <th mat-header-cell *matHeaderCellDef>Posted On</th>
+                          <td mat-cell *matCellDef="let row">{{row.created | date}}</td>
+                        </ng-container>
 
-            <ng-container matColumnDef="salary">
-                <th mat-header-cell *matHeaderCellDef>Salary</th>
-                <td mat-cell *matCellDef="let row">{{row.salary}}</td>
-            </ng-container>
+                        <ng-container matColumnDef="expiring">
+                          <th mat-header-cell *matHeaderCellDef></th>
+                          <td mat-cell *matCellDef="let row">
+                            <span *ngIf="row.expiring" class="blink text-danger">Expiring Soon</span>
+                          </td>
+                        </ng-container>
 
-            <ng-container matColumnDef="applylink">
-                <th mat-header-cell *matHeaderCellDef>Apply Link</th>
-                <td mat-cell *matCellDef="let row">{{row.applylink}}</td>
-            </ng-container>
-      
-            <ng-container matColumnDef="created">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-                Created
-              </th>
-              <td mat-cell *matCellDef="let row">{{row.created | date}}</td>
-            </ng-container>
-      
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-        </div>
-      
-        <mat-paginator [length]="resultsLength" [pageSize]="30"></mat-paginator>
-      </div>
-      
+                        <ng-container matColumnDef="expandedDetail">
+                            <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+                              <div class="element-detail"
+                                   [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                                <div class="element-description">
+                                  {{element.jd}}
+                                </div>
+                                <div class="element-description-attribution"><a (click)="viewJobDetails(element.id)"> Apply Now </a></div>
+                              </div>
+                            </td>
+                          </ng-container>
+                  
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+                            class="element-row"
+                            [class.expanded-row]="expandedElement === element"
+                            (click)="expandedElement = expandedElement === element ? null : element">
+                        </tr>
+                        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+                        <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="viewJobDetails(row.id)" style="cursor: pointer"></tr> -->
+                      </table>
+                    </div>
+                  
+                    <mat-paginator [length]="resultsLength" [pageSizeOptions]="[5, 10, 20, 50]"></mat-paginator>
+                  </div>
+                  
+</div>
+<div *ngIf="totalJobs === 0" style="text-align: center; margin:40px">
+    <h4>No Jobs to display</h4>
+</div>

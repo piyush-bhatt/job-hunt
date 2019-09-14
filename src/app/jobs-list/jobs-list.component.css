@@ -1,18 +1,19 @@
 /* Structure */
-.example-container {
+.container-div {
   position: relative;
   min-height: 200px;
 }
 
-.example-table-container {
+.table-container {
   position: relative;
+  margin: 0px 10px;
 }
 
 table {
   width: 100%;
 }
 
-.example-loading-shade {
+.loading-shade {
   position: absolute;
   top: 0;
   left: 0;
@@ -25,12 +26,6 @@ table {
   justify-content: center;
 }
 
-.example-rate-limit-reached {
-  color: #980000;
-  max-width: 360px;
-  text-align: center;
-}
-
 /* Column Widths */
 .mat-column-number,
 .mat-column-state {
@@ -39,4 +34,75 @@ table {
 
 .mat-column-created {
   max-width: 124px;
+}
+
+.mat-form-field {
+  font-size: 20px;
+  width: 60%;
+  position: relative;
+  left: 20%;
+  margin-top: 10px;
+}
+
+td, th {
+  width: 14%;
+  padding-left: 5px !important;
+  vertical-align: middle !important;
+}
+
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+  padding: 0;
+  border-bottom-width: 0;
+  border-bottom-style: none;
+}
+
+.blink {
+  -webkit-animation: blink 1s step-end infinite;
+  -moz-animation: blink 1s step-end infinite;
+  -o-animation: blink 1s step-end infinite;
+  animation: blink 1s step-end infinite;
+}
+
+@-webkit-keyframes blink {
+  67% { opacity: 0 }
+}
+
+@-moz-keyframes blink {
+  67% { opacity: 0 }
+}
+
+@-o-keyframes blink {
+  67% { opacity: 0 }
+}
+
+@keyframes blink {
+  67% { opacity: 0 }
+}
+
+tr.detail-row {
+  height: 0;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background: #efefef;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.element-detail {
+  overflow: hidden;
+  display: flex;
+  align-items: baseline;
+}
+
+.element-description {
+  padding: 16px;
+}
+
+.element-description-attribution {
+  opacity: 0.5;
+  cursor: pointer;
+  vertical-align: middle;
 }

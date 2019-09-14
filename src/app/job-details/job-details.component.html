@@ -1,0 +1,37 @@
+<div>
+    <mat-icon class="back" aria-hidden="false" aria-label="back" routerLink="/jobs">keyboard_backspace</mat-icon>
+</div>
+<div class="row justify-content-center" style="width: 100%">
+    <div class="col-8">
+        <div class="title">
+            <span><h4>{{jobDetails.title}}</h4></span>
+            <span class="spacer"></span>
+            <a href="{{jobDetails.applylink}}" target="_blank" class="btn btn-primary">Apply Now</a>
+        </div>
+        <span><h6>{{jobDetails.companyname}}</h6></span>
+        <mat-divider style="margin: 20px 0px;"></mat-divider>
+        <div class="enddate">
+            <span><h6>Expires On: </h6><p>{{jobDetails.enddate | date}}</p></span>
+        </div>
+        <div class="location">
+            <span><h6>Location:</h6></span>
+            <span><p>{{jobDetails.location}}</p></span>
+        </div>
+        <div class="description">
+            <span><h6>Job Description:</h6></span>
+            <span><p>{{jobDetails.jd}}</p></span>
+        </div>
+        <div class="skills">
+            <span><h6>Skills Required:</h6></span>
+            <span><p>{{jobDetails.skills}}</p></span>
+        </div>
+        <div class="experience">
+            <span><h6>Experience Required:</h6></span>
+            <span><p>{{jobDetails.experience}}</p></span>
+        </div>
+        <div class="salary">
+            <span><h6>Salary Offered:</h6></span>
+            <span><p>{{jobDetails.salary}}</p></span>
+        </div>
+    </div>
+</div>

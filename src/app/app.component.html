@@ -1,8 +1,8 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span><b>JOB HUNT</b></span>
-    <span class="example-spacer"></span>
-    <span>Login</span>
+    <span><a class="title" routerLink="/jobs"><b>JOB HUNT</b></a></span>
+    <span class="nav-spacer"></span>
+    <mat-icon class="new-icon" aria-hidden="false" aria-label="add new job" matTooltip="Add a new Job posting" routerLink="/jobs/new">add</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
-<app-jobs-list></app-jobs-list>
+<router-outlet></router-outlet>
