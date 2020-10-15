@@ -37,4 +37,3 @@ jobs:
           from: Github Actions # <no-reply@gmail.com>
           content_type: text/html
           # Optional attachments:
-          attachments: git.diff
