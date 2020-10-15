@@ -32,7 +32,6 @@ jobs:
           username: noreply.github.actions@gmail.com
           password: screamforme
           subject: Github Actions job result
-          # Literal body:
           body: Build job of ${{github.repository}} completed successfully!
           to: gavinharris123@gmail.com
           from: Github Actions # <no-reply@gmail.com>
