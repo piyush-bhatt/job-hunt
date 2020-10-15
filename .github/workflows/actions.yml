@@ -20,6 +20,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run build --if-present
+    - run: echo Job is ${{ job }}
+    - run: echo Job status is ${{ job.status }}
     - name: Send email
       if: ${{ job.status }} == failure
       uses: dawidd6/action-send-mail@v2
