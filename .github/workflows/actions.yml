@@ -20,20 +20,16 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run build --if-present
-  email:
-    name: Report status
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send email
-        uses: dawidd6/action-send-mail@v2
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: noreply.github.actions@gmail.com
-          password: screamforme
-          subject: Github Actions job result
-          body: Build job of ${{github.repository}} completed successfully!
-          to: gavinharris123@gmail.com
-          from: Github Actions # <no-reply@gmail.com>
-          content_type: text/html
-          # Optional attachments:
+    - name: Send email
+      if: ${{ job.status }} == failure
+      uses: dawidd6/action-send-mail@v2
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        username: noreply.github.actions@gmail.com
+        password: screamforme
+        subject: Github Actions job result
+        body: Build job of ${{github.repository}} completed successfully!
+        to: gavinharris123@gmail.com
+        from: Github Actions # <no-reply@gmail.com>
+        content_type: text/html
