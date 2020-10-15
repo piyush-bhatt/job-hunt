@@ -35,7 +35,6 @@ jobs:
           body: Build job of ${{github.repository}} completed successfully!
           to: gavinharris123@gmail.com
           from: Github Actions # <no-reply@gmail.com>
-          # Optional content type (defaults to text/plain):
           content_type: text/html
           # Optional attachments:
           attachments: git.diff
