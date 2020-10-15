@@ -30,6 +30,8 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
+    - name: Print diff
+      run: echo git diff
     - name: Install dependencies
       run: npm ci
     - name: Build
@@ -40,8 +42,8 @@ jobs:
       with:
         server_address: smtp.gmail.com
         server_port: 465
-        username: noreply.github.actions@gmail.com
-        password: screamforme
+        username: ${{secrets.GMAIL_SMTP_USER}}
+        password: ${{secrets.GMAIL_SMTP_PASS}}
         subject: Github Actions job result
         body: Build job of ${{github.repository}} completed successfully!
         to: gavinharris123@gmail.com
