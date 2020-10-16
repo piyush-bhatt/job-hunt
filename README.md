@@ -1,6 +1,6 @@
 # Job Hunt
 
-Live running instance (deployed on ZEIT): https://job-hunt.piyush-bhatt.now.sh  --> temp unavailable
+Live running instance (deployed on ZEIT): https://job-hunt.piyush-bhatt.now.sh --> temp unavailable
 
 
 Job Hunt is a web application for listing and searching job postings. This is the client side code for the same.
