@@ -2,6 +2,7 @@
 
 Live running instance (deployed on ZEIT): https://job-hunt.piyush-bhatt.now.sh 
 
+
 Job Hunt is a web application for listing and searching job postings. This is the client side code for the same.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
